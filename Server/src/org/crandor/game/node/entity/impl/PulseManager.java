@@ -29,6 +29,16 @@ public final class PulseManager {
 		run(pulse, false, pulseType);
 	}
 
+	public void runVariable(Pulse pulse, String... pulseType) {
+		if (!clear(pulseType)) {
+			return;
+		}
+		pulse.start();
+		if (pulse.isRunning()) {
+			GameWorld.VariablePulser.submit(current = pulse);
+		}
+	}
+
 	public void run(Pulse pulse, boolean fast, String... pulseType) {
 		if (!clear(pulseType)) {
 			return;

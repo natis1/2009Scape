@@ -17,7 +17,6 @@ import org.crandor.plugin.Plugin;
  */
 @InitializablePlugin
 public final class PickupPlugin extends OptionHandler {
-
 	@Override
 	public Plugin<Object> newInstance(Object arg) throws Throwable {
 		ItemDefinition.setOptionHandler("take", this);

@@ -91,7 +91,7 @@ public class Interaction {
 			return;
 		}
 		player.getPulseManager().clear("interaction:" + option.getName() + ":" + node.hashCode());
-		GameWorld.Pulser.submit(new Pulse(1, player) {
+		GameWorld.VariablePulser.submit(new Pulse(1, player) {
 			@Override
 			public boolean pulse() {
 				if (player.getLocks().isInteractionLocked() || player.getZoneMonitor().interact(node, option)) {
@@ -152,7 +152,7 @@ public class Interaction {
 			player.getPulseManager().clear(pulseType);
 			return;
 		}
-		player.getPulseManager().run(new MovementPulse(player, node, option.getHandler()) {
+		player.getPulseManager().runVariable(new MovementPulse(player, node, option.getHandler()) {
 			@Override
 			public boolean pulse() {
 				player.faceLocation(FaceLocationFlag.getFaceLocation(player, node));

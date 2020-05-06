@@ -144,6 +144,7 @@ public class ActionButtonPacket implements IncomingPacket {
 		case 64:
 		case 53:
 		case 9:
+		case 39:
 			data = buffer.getInt();
 			slot = buffer.getShort();
 			componentId = (data >> 16) & 0xFFFF;
@@ -206,18 +207,7 @@ public class ActionButtonPacket implements IncomingPacket {
 			componentId = data >> 16;
 			buttonId = data & 0xffff;
 			break;
-		case 39:
-			data = buffer.getInt();
-			slot = buffer.getShort();
-			componentId = (data >> 16) & 0xFFFF;
-			buttonId = data & 0xFFFF;
-			break;
 		case 128:
-			data = buffer.getInt();
-			slot = buffer.getShort();
-			componentId = (data >> 16) & 0xFFFF;
-			buttonId = data & 0xffff;
-			break;
 		case 235:
 			data = buffer.getInt();
 			slot = buffer.getShort();

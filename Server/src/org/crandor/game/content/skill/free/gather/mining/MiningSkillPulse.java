@@ -304,7 +304,7 @@ public class MiningSkillPulse extends Pulse {
         int skill = Skills.MINING;
         int level = 1 + player.getSkills().getLevel(skill) + player.getFamiliarManager().getBoost(skill);
         double hostRatio = Math.random() * (100.0 * resource.getRate());
-        double clientRatio = Math.random() * ((level - resource.getLevel()) * (1.0 + SkillingTool.getPickaxe(player).getRatio()));
+        double clientRatio = Math.random() * ((level - resource.getLevel()) * (1.0 + SkillingTool.getPickaxe(player).getRatio())) / GameWorld.TICKRATE_MOD;
         return hostRatio < clientRatio;
     }
 }

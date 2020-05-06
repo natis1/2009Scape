@@ -324,7 +324,7 @@ public final class FishingPulse extends SkillPulse<NPC> {
 		}
 		int level = 1 + player.getSkills().getLevel(Skills.FISHING) + player.getFamiliarManager().getBoost(Skills.FISHING);
 		double hostRatio = Math.random() * fish.getLevel();
-		double clientRatio = Math.random() * ((level * 1.25 - fish.getLevel()));
+		double clientRatio = Math.random() * ((level * 1.25 - fish.getLevel()))  / GameWorld.TICKRATE_MOD;
 		return hostRatio < clientRatio;
 	}
 }

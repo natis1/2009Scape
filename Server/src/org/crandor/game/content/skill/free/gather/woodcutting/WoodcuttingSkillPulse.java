@@ -18,6 +18,7 @@ import org.crandor.game.node.item.Item;
 import org.crandor.game.node.object.GameObject;
 import org.crandor.game.node.object.ObjectBuilder;
 import org.crandor.game.system.task.Pulse;
+import org.crandor.game.world.GameWorld;
 import org.crandor.game.world.map.Location;
 import org.crandor.game.world.update.flag.context.Animation;
 import org.crandor.tools.RandomFunction;
@@ -252,7 +253,7 @@ public class WoodcuttingSkillPulse extends Pulse {
         int skill = Skills.WOODCUTTING;
         int level = 1 + player.getSkills().getLevel(skill) + player.getFamiliarManager().getBoost(skill);
         double hostRatio = Math.random() * (100.0 * resource.getRate());
-        double clientRatio = Math.random() * ((level - resource.getLevel()) * (1.0 + SkillingTool.getHatchet(player).getRatio()));
+        double clientRatio = Math.random() * ((level - resource.getLevel()) * (1.0 + SkillingTool.getHatchet(player).getRatio())) / GameWorld.TICKRATE_MOD;
         return hostRatio < clientRatio;
     }
 }

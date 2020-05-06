@@ -77,11 +77,17 @@ public final class GameWorld {
 
     private static int cfTicks;
 
+    // Tickrate mod for chance based skills and item pickups
+    // DOES NOT* speed up the actual game.
+    // *Well it sorta does but only for very high level characters doing low level things. And for item pickups
+    public static final double TICKRATE_MOD = 1.0;
+
     // The multithreaded pulsemanagers
     public static PulseRunner FastPulser = new PulseRunner();
 
     public static PulseRunner Pulser = new PulseRunner();
 
+    public static PulseRunner VariablePulser = new PulseRunner();
 
     /**
      * Constructs a new {@Code GameWorld} {@Code Object}
@@ -178,6 +184,7 @@ public final class GameWorld {
         System.gc();
         FastPulser.init(20);
         Pulser.init(600);
+        VariablePulser.init((int) (600 / TICKRATE_MOD));
     }
 
     //39956

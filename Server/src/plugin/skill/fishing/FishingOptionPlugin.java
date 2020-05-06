@@ -42,7 +42,7 @@ public final class FishingOptionPlugin extends OptionHandler {
 		if (opt == null) {
 			return false;
 		}
-		player.getPulseManager().run(new FishingPulse(player, npc, opt));
+		player.getPulseManager().runVariable(new FishingPulse(player, npc, opt));
 		return true;
 	}
 

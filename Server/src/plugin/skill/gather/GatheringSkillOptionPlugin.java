@@ -30,9 +30,9 @@ public final class GatheringSkillOptionPlugin extends OptionHandler {
 	@Override
 	public boolean handle(Player player, Node node, String option) {
 		if(option.equals("mine")){
-			player.getPulseManager().run(new MiningSkillPulse(player, (GameObject) node));
+			player.getPulseManager().runVariable(new MiningSkillPulse(player, (GameObject) node));
 		} else {
-			player.getPulseManager().run(new WoodcuttingSkillPulse(player, (GameObject) node));
+			player.getPulseManager().runVariable(new WoodcuttingSkillPulse(player, (GameObject) node));
 		}
 		return true;
 	}
