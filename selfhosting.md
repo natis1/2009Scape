@@ -44,8 +44,8 @@ CREATE DATABASE global;
 ```
 gunzip server.sql.gz
 gunzip global.sql.gz
-mysql -u root -p server < server.sql.gz
-mysql -u root -p global < global.sql.gz
+mysql -u root -p server < server.sql
+mysql -u root -p global < global.sql
 ```
 
 ## Running the server/client
