@@ -29,7 +29,7 @@ In a terminal, enter the Client folder and run `gradle build`
 - Start the `Apache` and `MySQL` modules
 - Navigate to http://localhost/phpmyadmin/
 - Create 2 new databases named `server` and `global`
-- Import `Server/server.sql` and `Server/global.sql` into their respective databases
+- Import `Server/server.sql.gz` and `Server/global.sql.gz` into their respective databases
   - _Refer [here](https://www.thecodedeveloper.com/import-large-sql-files-xampp/) for help importing the `.sql` files_
 
 ### Linux Command Line
@@ -42,8 +42,10 @@ CREATE DATABASE global;
 ```
 - Import global & server database contents from the files provided:
 ```
-mysql -u root -p server < server.sql
-mysql -u root -p global < global.sql
+gunzip server.sql.gz
+gunzip global.sql.gz
+mysql -u root -p server < server.sql.gz
+mysql -u root -p global < global.sql.gz
 ```
 
 ## Running the server/client
