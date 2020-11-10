@@ -231,7 +231,7 @@ final class CS2Script extends Linkable {
       try {
             Object[] aobj = script.arguments;
             int j = ((Integer) aobj[0]).intValue();
-            //System.out.println("CS opcode: " + j);
+            // System.out.println("CS script run: " + j);
             AssembledMethod currentMethod = ItemDefinition.getMethodByID(j);
             if (null == currentMethod)
                return;
@@ -2273,7 +2273,7 @@ final class CS2Script extends Linkable {
                                                                         ItemDefinition.intsStack[iStackCounter++] = Class83.method1411(0);
                                                                         continue;
                                                                   }
-                                                                  if (opcode == 5307) {
+                                                                  if (opcode == CS2AsmOpcodes.SET_WINDOW_MODE.getOp()) {
                                                                         int k32 = ItemDefinition.intsStack[--iStackCounter];
                                                                         if (k32 < 0 || k32 > 2)
                                                                            k32 = 0;

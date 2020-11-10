@@ -72,8 +72,9 @@ public enum CS2AsmOpcodes {
     // Copies an int from the int stack to paged ram. The page is given by the operand and the
     // page entry is given by the NEXT value on the int stack.
     // Thus this pops the int stack TWICE.
-    POP_TO_PAGED_RAM(46);
+    POP_TO_PAGED_RAM(46),
 
+    SET_WINDOW_MODE(5307);
 
     private int op;
 

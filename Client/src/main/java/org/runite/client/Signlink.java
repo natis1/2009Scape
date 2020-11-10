@@ -288,7 +288,6 @@ public class Signlink implements Runnable {
                                 Field var20 = Class.forName("java.lang.ClassLoader").getDeclaredField("nativeLibraries");
                                 var20.setAccessible(true);
                                 Vector var24 = (Vector) var20.get(((Class) var1.anObject977).getClassLoader());
-
                                 for (var18 = 0; var18 < var24.size(); ++var18) {
                                     Object var26 = var24.elementAt(var18);
                                     Method var9 = var26.getClass().getDeclaredMethod("finalize", new Class[0]);

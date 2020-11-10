@@ -660,7 +660,7 @@ final class Class51 {
    }
 
    static void method1137(float var0) {
-      method1152(var0);
+      aFloat848 = (float)((double)var0 + (Math.random() * 0.03D - 0.015D));
       method1150();
    }
 
@@ -3181,8 +3181,6 @@ final class Class51 {
    }
 
    private static void method1152(float var0) {
-      aFloat848 = var0;
-      aFloat848 = (float)((double)aFloat848 + (Math.random() * 0.03D - 0.015D));
    }
 
    static int method1153() {

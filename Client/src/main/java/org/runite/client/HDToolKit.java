@@ -22,8 +22,6 @@ public final class HDToolKit {
    private static GLDrawable glDrawable;
 
 
-
-   private static String vendor;
    private static String renderer;
    private static float aFloat1787;
    private static boolean aBoolean1788 = false;
@@ -115,7 +113,7 @@ public final class HDToolKit {
                aFloatArray1808[14] = aFloat1795 * var3;
             }
 
-             gl.glMatrixMode(5889);
+            gl.glMatrixMode(5889);
             gl.glLoadMatrixf(aFloatArray1808, 0);
             gl.glMatrixMode(5888);
          }
@@ -250,7 +248,7 @@ public final class HDToolKit {
          AWTGraphicsConfiguration configuration = AWTGraphicsConfiguration.create(canvas.getGraphicsConfiguration(), null, null);
          JAWTWindow jawtWindow = NewtFactoryAWT.getNativeWindow(canvas, configuration);
          GLDrawableFactory glDrawableFactory = GLDrawableFactory.getFactory(profile);
-         GLDrawable glDrawable = glDrawableFactory.createGLDrawable(jawtWindow);
+         GLDrawable glDrawable = glDrawableFactory.createGLDrawable(jawtWindow.getNativeSurface());
          glDrawable.setRealized(true);
          GLContext glContext = glDrawable.createContext(null);
          glContext.makeCurrent();
@@ -302,16 +300,7 @@ public final class HDToolKit {
 
    private static int method1840() {
       int var0 = 0;
-      vendor = gl.glGetString(7936);
       renderer = gl.glGetString(7937);
-      String var1 = vendor.toLowerCase();
-      if(var1.contains("microsoft")) {
-         var0 |= 1;
-      }
-
-      if(var1.contains("brian paul") || var1.contains("mesa")) {
-         var0 |= 1;
-      }
 
       String versionString = gl.glGetString(7938);
       String[] var3 = versionString.split("[. ]");
@@ -604,7 +593,6 @@ public final class HDToolKit {
                   }
                } catch (Exception var8) {
                }
-
                if(var4++ > 5) {
                   return;
                }
