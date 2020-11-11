@@ -248,13 +248,26 @@ public class Signlink implements Runnable {
 
                             if (osName.startsWith("linux") || isSunOS) {
                                 createLibs(isSunOS ? (is64Bit ? 7 : 6) : (is64Bit ? 5 : 4));
-//                                var7.invoke(var6, var1.anObject977, method1448(this.gameName, this.anInt1215, "libgluegen-rt.so").toString());
-//                                Class var8 = ((Class) var1.anObject977).getClassLoader().loadClass("com.sun.opengl.impl.x11.DRIHack");//TODO:
-//                                var8.getMethod("begin", new Class[0]).invoke(null, new Object[0]);
-//                                var7.invoke(var6, var1.anObject977, method1448(this.gameName, this.anInt1215, "libjogl_desktop.so").toString());
-//                                var8.getMethod("end", new Class[0]).invoke(null, new Object[0]);
-//                                var7.invoke(var6, var1.anObject977, method1448(this.gameName, this.anInt1215, "libnativewindow_x11.so").toString());
+                                try {
+                                    /*
+                                    System.out.println("Loading glugen");
+                                    var7.invoke(var6, var1.anObject977, method1448(this.gameName, this.anInt1215, "libgluegen-rt.so").toString());
+                                    System.out.println("Loading opengl");
 
+                                    var7.invoke(var6, var1.anObject977, method1448(this.gameName, this.anInt1215, "libGL.so.1.7.0").toString());
+
+                                    System.out.println("Loading jogl");
+                                    var7.invoke(var6, var1.anObject977, method1448(this.gameName, this.anInt1215, "libjogl_desktop.so").toString());
+
+                                    System.out.println("Loading nativewindow x11");
+                                    var7.invoke(var6, var1.anObject977, method1448(this.gameName, this.anInt1215, "libnativewindow_x11.so").toString());
+                                    System.out.println("Loading nativewindow awt");
+                                    var7.invoke(var6, var1.anObject977, method1448(this.gameName, this.anInt1215, "libnativewindow_awt.so").toString());
+                                    System.out.println("Loaded all libraries successfully"); */
+                                }
+                                catch (Exception e) {
+                                    System.out.println("Failed to load library because error: " + e);
+                                }
 
                             } else if (osName.startsWith("mac")) {
                                 createLibs(is64Bit ? 2 : 3);
@@ -359,7 +372,7 @@ public class Signlink implements Runnable {
 
     public void createLibs(int archive) throws Throwable {
         System.out.println("creating libs");
-        String joglDesktop = archive < 2 ? "jogl_desktop.dll" : archive < 4 ? "libnativewindow_macosx.jnilib" : "libnativewindow_x11.so";
+        String joglDesktop = archive < 2 ? "jogl_desktop.dll" : archive < 4 ? "libnativewindow_macosx.jnilib" : "libjogl_desktop.so";
         String gluegen = archive < 2 ? "gluegen-rt.dll" : archive < 4 ? "libgluegen-rt.jnilib" : "libgluegen-rt.so";
         String nativeWindow = archive < 2 ? "nativewindow_win32.dll" : archive < 4 ? "libnativewindow_macosx.jnilib" : "libnativewindow_x11.so";
         String nativeWindowAWT = archive < 2 ? "nativewindow_awt.dll" : archive < 4 ? "libnativewindow_awt.jnilib" : "libnativewindow_awt.so";
